@@ -1,5 +1,8 @@
 # Cordova Browser-Sync Plugin
 
+[![dependencies Status](https://david-dm.org/nparashuram/cordova-plugin-browsersync/status.svg)](https://david-dm.org/nparashuram/cordova-plugin-browsersync)
+[![devDependencies Status](https://david-dm.org/nparashuram/cordova-plugin-browsersync/dev-status.svg)](https://david-dm.org/nparashuram/cordova-plugin-browsersync?type=dev)
+
 Integrating [BrowserSync](http://browsersync.io) into your Cordova workflow.
 
 - Watch files in the `www` folder and automatically reload HTML and CSS in all connected devices
@@ -49,3 +52,36 @@ cordova run -- --live-reload --ignore=lib/**/*.*
 ```
 
 The `--ignore` commands takes an [anymatch](https://github.com/es128/anymatch) compatible destination relative to the `www` folder.
+
+### Setting custom hostname
+Sometimes, depending on your network, your OS will report multiple external IP addresses. If this happens, by default browsersync just picks the first one and hopes for the best.
+
+To override this behaviour and manually select which host you want to use for the external interface, use the `--host` option, for example:
+
+```
+cordova run -- --live-reload --host=192.168.1.1
+```
+
+### Setting custom port
+If you need to forward ports from your local computer to the device because the device is not in the same network as your device then you may getting an error or red circle.
+If this happens the problem could be the `3000` port. Then you can try another one for example `8090` which should work then.
+
+```
+cordova run -- --live-reload --port=8090
+```
+
+### Setting custom index file
+If you do not have "index.html" in your `config.xml` under `content` node then you need to set this option to the value.
+Please use the `--index` option.
+
+```
+cordova run -- --live-reload --index=content.html
+```
+
+### Enable https
+If you need https you can enable it with this option.
+You can use `--https` for example.
+
+```
+cordova run -- --live-reload --https
+```
